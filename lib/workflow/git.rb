@@ -1,4 +1,4 @@
-module SendgridWorkflow
+module Workflow
   module Git
     class Ref
       branch = nil

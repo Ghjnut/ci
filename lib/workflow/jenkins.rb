@@ -1,4 +1,4 @@
-module SendgridWorkflow
+module Workflow
   module Jenkins
     class Job
       id = nil
