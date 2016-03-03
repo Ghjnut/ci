@@ -1,0 +1,17 @@
+vagrant:
+  pre-build: <noop>
+  build: vagrant up
+  post-build: <noop>
+  test: vagrant ssh -c 'bin/test'
+
+docker:
+  pre-build: <noop>
+  build: docker build .
+  post-build: <noop>
+  test: docker run --rm -it $APPNAME bin/test
+
+docker-compose:
+  pre-build: <noop>
+  build: docker-compose build
+  post-build: <noop>
+  test: docker-compose run --rm $APPNAME bin/test
