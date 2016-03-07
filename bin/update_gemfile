@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+[[ "$TRACE" ]] && set -x
+set -eu -o pipefail
+
+docker run --rm -v "$PWD":/usr/src/app -w /usr/src/app ruby:2.3 bundle install
