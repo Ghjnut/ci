@@ -1,11 +1,12 @@
-module Workflow
-	#def start_build(jenkins_job, branch=nil, commit=nil, pull_request=nil, merge_master=False)
-	def start_build(job_name)
-		@client = JenkinsApi::Client.new(:server_ip => 'jenkins')
-		@client.job.build(job_name)
+require 'workflow/version'
+require 'workflow/jenkins'
 
-		#build = JenkinsBuild = Jenkins.get_build(build_name)
-		#return build.start(jenkins_job, branch=nil, commit=nil, pull_request=nil, merge_master=False)
-	end
+module Workflow
+  #def start_build(jenkins_job, branch=nil, commit=nil, pull_request=nil, merge_master=False)
+  def Workflow.start_job(job_name)
+		Workflow::Jenkins.start_job(job_name)
+    #build = JenkinsBuild = Jenkins.get_build(build_name)
+    #return build.start(jenkins_job, branch=nil, commit=nil, pull_request=nil, merge_master=False)
+  end
 
 end

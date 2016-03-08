@@ -6,7 +6,6 @@ services:
       - "/home/ghjnut/projects/ci:/usr/src/app"
     depends_on:
       - jenkins
-    command: /bin/bash
   jenkins:
     image: jenkins
     ports:

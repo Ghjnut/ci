@@ -1,2 +1,4 @@
 .bundle
 Session.vim
+.gitconfig
+.ssh

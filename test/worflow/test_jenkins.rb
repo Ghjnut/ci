@@ -1,10 +1,13 @@
 require 'minitest/autorun'
-require 'workflow'
+require 'workflow/jenkins'
+require 'yaml'
+require 'active_support'
+require 'active_support/core_ext'
 
 class TestWorkflow < Minitest::Test
   def test_job_start
 		# TODO: Start a jenkins job with a github PR.
-    Workflow.start_job('test')
+    Workflow::Jenkins.job_start('ci')
     #assert_equal "OHAI!", @meme.i_can_has_cheezburger?
   end
 
@@ -21,7 +24,11 @@ class TestWorkflow < Minitest::Test
   end
 
   def test_build_create
-		# TODO: Create a jenkins build.
+		yaml = YAML.load_file('examples/jenkins.yml')
+		puts yaml
+		xml = yaml.to_xml(:root => 'project')
+		puts xml
+    Workflow::Jenkins.build_create('test', xml)
   end
 
   def test_build_update
@@ -48,3 +55,4 @@ class TestWorkflow < Minitest::Test
   #  skip "test this later"
   #end
 end
+
