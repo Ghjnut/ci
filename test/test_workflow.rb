@@ -28,10 +28,6 @@ class TestWorkflow < Minitest::Test
     # TODO: Update a jenkins build with expected return.
   end
 
-  def test_build_update
-    # TODO: Update a jenkins build with expected return.
-  end
-
   # def setup
   #  @meme = Meme.new
   # end

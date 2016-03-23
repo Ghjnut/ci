@@ -3,9 +3,9 @@ require 'jenkins_api_client'
 module Workflow
   module Jenkins
     class Job
-      id = nil
-      name = ''
-      git_repo = nil
+      @id = nil
+      @name = ''
+      @git_repo = nil
 
       def start_branch_build(branch, artifact = false)
         # JenkinsLib.start_job(options={BRANCH => branch})
@@ -19,10 +19,13 @@ module Workflow
         # Jenkins::Build = JenkinsLib.start_job(options={HASH => hash})
       end
     end
+
     class Build
     end
+
     class Connection
     end
+
     def self.build_create(build_name, xml)
       client = JenkinsApi::Client.new(server_ip: 'jenkins')
       client.job.create(build_name, xml)
