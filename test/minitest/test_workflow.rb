@@ -4,23 +4,23 @@ require 'workflow'
 class TestWorkflow < Minitest::Test
   def test_job_start
     # TODO: Start a jenkins job with a github PR.
-    #Workflow.start_job('test')
+    # Workflow.start_job('test')
     # assert_equal "OHAI!", @meme.i_can_has_cheezburger?
   end
 
   def test_create_release
     repo_name = 'Ghjnut/ci'
     semver_tag = '0.0.0'
-    tags = Workflow.github_create_release(repo_name, semver_tag)
+    Workflow.github_create_release(repo_name, semver_tag)
   end
 
   def test_merge_pr_success
-    repo_name = 'Ghjnut/ci'
-    pr_number = 1
-    #Workflow.merge_pr(repo, pr_number)
-    #tags.each do |tag|
-    #  puts tag.tag
-    #end
+    # repo_name = 'Ghjnut/ci'
+    # pr_number = 1
+    # Workflow.merge_pr(repo, pr_number)
+    # tags.each do |tag|
+    #   puts tag.tag
+    # end
   end
 
   def test_merge_pr_failure

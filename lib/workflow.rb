@@ -20,11 +20,13 @@ module Workflow
     config = Workflow::Configuration.new(ENV)
     github_client = Workflow::Github.factory(config.github_token)
     repo_tags = github_client.get_repo_tags(repo_name)
-    #repo_tags.each do |tag|
-    #  puts tag.name
-    #  puts tag.commit.sha
-    #  puts tag.zipball_url
-    #end
+    puts semver_tag
+    puts repo_tags
+    # repo_tags.each do |tag|
+    #   puts tag.name
+    #   puts tag.commit.sha
+    #   puts tag.zipball_url
+    # end
     # semver_tag = Workflow
     #   fail
     # assert conforms to SemVer
