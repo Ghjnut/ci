@@ -4,10 +4,11 @@ services:
     build: .
     volumes:
       - "/home/ghjnut/projects/ci:/usr/src/app"
+      - "/var/run/docker.sock:/var/run/docker.sock"
     depends_on:
       - jenkins
   jenkins:
     image: jenkins
     ports:
-      - "8080:8080"
-      - "50000:50000"
+      - "8080"
+      - "50000"
