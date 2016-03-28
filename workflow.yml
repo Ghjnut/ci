@@ -1,0 +1,8 @@
+---
+project:
+  name: workflow
+virtualization:
+  docker-compose: 
+    test: bin/test
+    build: bin/build
+    package: bin/package
