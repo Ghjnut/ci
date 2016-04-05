@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require 'workflow'
+
+# Workflow::CLI.new argv
+def main()
+end

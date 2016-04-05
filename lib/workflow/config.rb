@@ -18,7 +18,7 @@ module Workflow
       YAML.load(File.read(path))
     end
 
-    def Configuration.factory(env=ENV, workflow_path='/usr/src/app/workflow.yml')
+    def Configuration.factory(env=ENV, workflow_path='./workflow.yml')
       new(env, workflow_path)
     end
   end

@@ -1,23 +1,26 @@
 require 'backticks'
 
 module Workflow
-	class DockerCompose
-		attr_accessor :service
+  class DockerCompose
+    attr_accessor :service
 
-		def initialize(service)
-			@service = service
-		end
+    def initialize(file='docker-compose.yml', service)
+      @file = file
+      @service = service
+    end
 
-		def build(service=nil, file='docker-compose.yml')
-			command = "docker-compose -f #{file} build --force-rm #{service}"
-			Backticks.run(command)
-			return $?.success?
-		end
+    def build
+      command = "docker-compose -f #{@file} build --force-rm"
+      output = Backticks.run(command)
+      return [ $?.success?, output ]
+    end
 
-		def run(command)
-			command = "docker-compose run --rm #{@service} bash -c '#{command}'"
-			Backticks.run(command)
-			return $?.success?
-		end
-	end
+		# TODO: The arguments need to be cut into argument options
+    def run(command, shell)
+      # '-c' may not handle all shells, but handles /bin/bash and /bin/sh
+      command = "docker-compose -f #{@file} run --rm -T #{@service} #{shell} -c '#{command}'"
+      output = Backticks.run(command)
+      return [ $?.success?, output ]
+    end
+  end
 end

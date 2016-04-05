@@ -11,7 +11,7 @@ module Workflow
       new(client)
     end
 
-    def load_branch(repo, branch)
+    def branch_get(repo, branch)
       @client.get_branch(repo, branch)
     end
 
@@ -24,20 +24,36 @@ module Workflow
     #   "zipball_url": "https://github.com/octocat/Hello-World/zipball/v0.1",
     #   "tarball_url": "https://github.com/octocat/Hello-World/tarball/v0.1"
     # }
-    def get_repo_tags(repo)
+    def tag_list(repo)
       @client.tags(repo)
     end
 
-    def get_pull_request(repo, pull_request_number)
+    def tag_create(repo, tag, message, object_sha)
+      @client.tags(repo, tag, message, object_sha)
+    end
+
+    def release_list(repo)
+      @client.list_releases(repo)
+    end
+
+    def release_create(repo, tag_name)
+      @client.create_release(repo)
+    end
+
+    def release_delete(repo, release)
+      @client.delete_release(repo)
+    end
+
+    def pull_request_get(repo, pull_request_number)
       @client.pull_request(repo, pull_request_number)
+    end
+
+    def pull_request_merge(repo, pull_request_number)
+      @client.merge_pull_request(repo, pull_request_number)
     end
 
     def pull_request_merged?(repo, pull_request_number)
       @client.pull_request_merged?(repo, pull_request_number)
-    end
-
-    def merge_pull_request(repo, pull_request_number)
-      @client.merge_pull_request(repo, pull_request_number)
     end
   end
 end

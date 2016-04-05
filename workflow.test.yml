@@ -1,0 +1,7 @@
+---
+project:
+  name: test
+docker_compose: 
+  test: echo test
+  build: echo build # not used
+  package: echo package
